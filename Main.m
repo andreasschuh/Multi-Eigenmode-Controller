@@ -11,8 +11,8 @@ clear all;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Extract given resonace frequencies and Q factors
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-OsziTs=0.02/100000; % oszi sampling = range/number of points saved
-[resonance_frequency_mode1,resonance_frequency_mode2,phase_mode1,phase_mode2,q_factor_mode1,q_factor_mode2,gain_mode1,gain_mode2] = FPGQ3(OsziTs); %function call
+Recorddata=0.02/100000; %Sampling rate in HZ of recording system for parameter estimation of current system
+[resonance_frequency_mode1,resonance_frequency_mode2,phase_mode1,phase_mode2,q_factor_mode1,q_factor_mode2,gain_mode1,gain_mode2] = EstimateParam(OsziTs); %function call, see separate file
 
 %%%%%%%%%%%%%%%%%%%
 %Desired Parameters
