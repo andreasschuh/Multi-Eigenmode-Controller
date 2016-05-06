@@ -13,9 +13,8 @@ library UNISIM;
 use UNISIM.VComponents.all;
 
 entity interface is
-
-port(	--clocks: 100 MHz and 24 MHz for Spartan 3A DSP
-      cmos_clk : in std_logic;
+	port(	--clocks: 100 MHz and 24 MHz for Spartan 3A DSP
+		cmos_clk : in std_logic;
 		cmos24_clk : in std_logic;
 		
 		--DAC Interface
@@ -86,36 +85,36 @@ architecture Behavioral of interface is
 
 	-- Some signals for ADCs and DACs removed
 
-	signal add1	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000"; 
-	signal add2	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000"; 
+	signal add1				:  std_logic_vector(31 downto 0):="00000000000000000000000000000000"; 
+	signal add2				:  std_logic_vector(31 downto 0):="00000000000000000000000000000000"; 
 	signal resultfloat	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000"; 
 	signal resultfloat2	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000"; 
 
-	signal da1_in	:  std_logic_vector(15 downto 0):="0000000000000000"; 
-	signal da2_in	:  std_logic_vector(15 downto 0):="0000000000000000";
+	signal da1_in			:  std_logic_vector(15 downto 0):="0000000000000000"; 
+	signal da2_in			:  std_logic_vector(15 downto 0):="0000000000000000";
 	
-	signal adc1_out : std_logic_vector(15 downto 0);
-	signal adc2_out : std_logic_vector(15 downto 0);
+	signal adc1_out 		: std_logic_vector(15 downto 0);
+	signal adc2_out 		: std_logic_vector(15 downto 0);
 
 	--  DCM Signals
 	signal clock_divided : std_logic;
-	signal cmosbuff_clk : std_logic;
+	signal cmosbuff_clk 	: std_logic;
 
-	signal idac1ff 	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal idac1ff2 	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal idac1 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac1ff 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac1ff2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac1 			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 	
-	signal idac2ff 	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal idac2ff2 	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal idac2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac2ff 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac2ff2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac2 			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 	
-	signal iadc1ff 	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal iadc1ff2 	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal iadc1 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc1ff 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc1ff2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc1 			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 	
-	signal iadc2ff 	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal iadc2ff2 	:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal iadc2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc2ff 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc2ff2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc2 			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 	
 	
 	begin
