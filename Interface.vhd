@@ -63,7 +63,8 @@ architecture Behavioral of interface is
 		END COMPONENT;
 
 	COMPONENT compensator -- main component with compensator calculation, see separate file
-		Port (ADC1in : in  STD_LOGIC_VECTOR (31 downto 0);
+		Port (
+				ADC1in : in  STD_LOGIC_VECTOR (31 downto 0);
 				ADC2in : in  STD_LOGIC_VECTOR (31 downto 0);
 				DAC1out : out  STD_LOGIC_VECTOR (31 downto 0);
 				DAC2out : out  STD_LOGIC_VECTOR (31 downto 0);
@@ -72,15 +73,15 @@ architecture Behavioral of interface is
 	END COMPONENT;
 
 	COMPONENT clock   -- DCM for slower clock rate generation
-		PORT(
-			U1_CLKIN_IN : IN std_logic;
-			U1_RST_IN : IN std_logic;          
-			U1_CLKDV_OUT : OUT std_logic;
-			U1_CLKIN_IBUFG_OUT : OUT std_logic;
-			U1_CLK0_OUT : OUT std_logic;
-			U2_CLK0_OUT : OUT std_logic;
-			U2_LOCKED_OUT : OUT std_logic
-			);
+		PORT (
+				U1_CLKIN_IN : IN std_logic;
+				U1_RST_IN : IN std_logic;          
+				U1_CLKDV_OUT : OUT std_logic;
+				U1_CLKIN_IBUFG_OUT : OUT std_logic;
+				U1_CLK0_OUT : OUT std_logic;
+				U2_CLK0_OUT : OUT std_logic;
+				U2_LOCKED_OUT : OUT std_logic
+				);
 	END COMPONENT;
 
 	-- Some signals for ADCs and DACs removed
@@ -93,28 +94,28 @@ architecture Behavioral of interface is
 	signal da1_in			:  std_logic_vector(15 downto 0):="0000000000000000"; 
 	signal da2_in			:  std_logic_vector(15 downto 0):="0000000000000000";
 	
-	signal adc1_out 		: std_logic_vector(15 downto 0);
-	signal adc2_out 		: std_logic_vector(15 downto 0);
+	signal adc1_out		: std_logic_vector(15 downto 0);
+	signal adc2_out		: std_logic_vector(15 downto 0);
 
 	--  DCM Signals
-	signal clock_divided : std_logic;
-	signal cmosbuff_clk 	: std_logic;
+	signal clock_divided	: std_logic;
+	signal cmosbuff_clk	: std_logic;
 
-	signal idac1ff 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal idac1ff2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal idac1 			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac1ff			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac1ff2		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac1			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 	
-	signal idac2ff 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal idac2ff2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal idac2 			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac2ff			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac2ff2		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal idac2			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 	
-	signal iadc1ff 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal iadc1ff2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal iadc1 			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc1ff			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc1ff2		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc1			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 	
-	signal iadc2ff 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal iadc2ff2 		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
-	signal iadc2 			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc2ff			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc2ff2		:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
+	signal iadc2			:  std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 	
 	
 	begin
